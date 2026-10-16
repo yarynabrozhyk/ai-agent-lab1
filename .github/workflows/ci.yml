@@ -1,0 +1,41 @@
+name: CMake CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build and test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_path: build-ci/hello_world
+          - os: windows-latest
+            artifact_path: build-ci/Release/hello_world.exe
+          - os: macos-latest
+            artifact_path: build-ci/hello_world
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run Windows build and test script
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        run: .\ci.bat
+
+      - name: Run Linux and macOS build and test script
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+        shell: bash
+        run: bash ./ci.sh
+
+      - name: Upload Hello World executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-world-${{ matrix.os }}
+          path: ${{ matrix.artifact_path }}
+          if-no-files-found: error

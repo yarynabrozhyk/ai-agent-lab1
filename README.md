@@ -13,15 +13,9 @@
 ## Project description and purpose
 
 This project defines an AI-assisted workflow for creating and verifying a
-cross-platform C++ Hello World application. The intended workflow will
-scaffold the application, configure CMake, add a `BasicAddition` GoogleTest
-unit test registered with CTest, and configure GitHub Actions for Windows,
-Linux, and macOS.
-
-The repository currently contains the agent customization layer only. The
-application source, CMake project, tests, CI scripts, workflow, and build
-directories have not yet been generated. Their creation and verification will
-be performed later by the documented commands.
+cross-platform C++ Hello World application. It includes the application
+source, CMake build, `BasicAddition` GoogleTest unit test registered with CTest,
+and script-driven GitHub Actions for Windows, Linux, and macOS.
 
 ## AI agent overview
 
@@ -69,8 +63,25 @@ The reusable commands are stored in [`.github/prompts/`](.github/prompts/):
    generated.
 5. Review each command's output and stop to investigate any reported failure.
 
-The `/init` workflow is planned but has not yet been run. No successful build,
-test, CI run, or generated application is claimed by this documentation.
-
 For the detailed design, see [`docs/architecture.md`](docs/architecture.md).
 For operational instructions, see [`docs/usage.md`](docs/usage.md).
+
+## Build and test
+
+Configure and build out of source with CMake:
+
+```sh
+cmake -S . -B build
+cmake --build build
+ctest --test-dir build --output-on-failure
+```
+
+Run only the `BasicAddition` test with:
+
+```sh
+ctest --test-dir build -R '^BasicAddition$' --output-on-failure
+```
+
+The platform CI entry points are [`ci.sh`](ci.sh) and [`ci.bat`](ci.bat).
+They configure, build, and test the project before the workflow uploads the
+resulting Hello World executable.

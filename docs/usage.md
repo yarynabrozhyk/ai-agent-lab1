@@ -2,10 +2,9 @@
 
 ## Current state
 
-The Build Engineer agent, its skills, and its prompt commands are available in
-the repository. The C++ application, CMake configuration, tests, CI scripts,
-workflow, and build output are not yet generated. The commands below describe
-the planned workflow and must be validated when executed.
+The Build Engineer agent, its skills, prompt commands, C++ application, CMake
+configuration, tests, CI scripts, and workflow are available in the repository.
+Build output is generated out of source and is not committed.
 
 ## Select the custom agent in VS Code
 
@@ -32,8 +31,9 @@ In the Build Engineer Local Agent session:
 4. Review the output after every step. If a required step fails, the workflow
    must stop and report the failing command, path, and relevant error.
 
-The `/init` command has not been run for this project yet. Successful
-generation, compilation, testing, and CI execution remain to be validated.
+The `/init` workflow creates or verifies the project in the order documented
+above. Local build and test results are distinct from hosted GitHub Actions
+results.
 
 ## Invoke `/check`
 
