@@ -1,0 +1,30 @@
+# CMake build directories
+build/
+build-*/
+cmake-build-*/
+
+# Generated build and test files
+CMakeFiles/
+CMakeCache.txt
+CTestTestfile.cmake
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+Testing/
+
+# Platform and IDE files
+.vs/
+.vscode/*
+!.vscode/settings.json
+*.user
+*.suo
+*.swp
+.DS_Store
+
+# Compiled binaries and libraries
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
