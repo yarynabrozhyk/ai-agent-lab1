@@ -7,10 +7,9 @@ Variant 1. The target deliverable is a cross-platform C++ Hello World project
 using CMake, GoogleTest/CTest, and GitHub Actions for Windows, Linux, and
 macOS.
 
-The current repository contains the agent, skills, prompts, and documentation
-definitions. The application source, CMake files, tests, CI scripts, workflow,
-and build output are planned artifacts and have not yet been generated or
-verified.
+The repository contains the agent, skills, prompts, documentation, C++ source,
+CMake files, GoogleTest/CTest test, CI scripts, and workflow. Build output is
+generated out of source and remains excluded from version control.
 
 ## Components and responsibilities
 
