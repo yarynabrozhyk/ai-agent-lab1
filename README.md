@@ -85,3 +85,18 @@ ctest --test-dir build -R '^BasicAddition$' --output-on-failure
 The platform CI entry points are [`ci.sh`](ci.sh) and [`ci.bat`](ci.bat).
 They configure, build, and test the project before the workflow uploads the
 resulting Hello World executable.
+
+## Verifying CI Results
+
+After pushing changes or opening a Pull Request, open the
+Actions tab in the GitHub repository.
+
+Select the latest workflow run and verify that all three
+platform jobs have completed successfully:
+
+- Ubuntu
+- Windows
+- macOS
+
+Check the test results and download the generated build
+artifacts if needed.
